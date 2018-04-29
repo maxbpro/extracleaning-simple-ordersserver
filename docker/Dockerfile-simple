@@ -1,0 +1,5 @@
+FROM openjdk:8-jdk
+
+ADD landing-0.0.1-SNAPSHOT.jar landing-0.0.1-SNAPSHOT.jar
+RUN sh -c 'touch /landing-0.0.1-SNAPSHOT.jar'
+ENTRYPOINT ["java","-Dspring.data.mongodb.uri=mongodb://spring-demo-mongo/orders","-Djava.security.egd=file:/dev/./urandom","-jar","/landing-0.0.1-SNAPSHOT.jar"]
