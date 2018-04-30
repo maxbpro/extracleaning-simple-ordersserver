@@ -7,8 +7,8 @@ RUN mkdir -p /opt/app
 ENV PROJECT_HOME /opt/app
 
 
-COPY landing-0.0.1-SNAPSHOT.jar $PROJECT_HOME/landing-0.0.1-SNAPSHOT.jar
+COPY target/landing-server-0.0.1-SNAPSHOT.jar  $PROJECT_HOME/server.jar
 
 WORKDIR $PROJECT_HOME
 
-CMD ["java", "-Dspring.data.mongodb.uri=mongodb://springboot-mongo:27017/orders","-Djava.security.egd=file:/dev/./urandom","-jar","./landing-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-Dspring.data.mongodb.uri=mongodb://springboot-mongo:27017/orders","-Djava.security.egd=file:/dev/./urandom","-jar","./server.jar"]
