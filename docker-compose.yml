@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   springboot:
-    build: ./docker
+    build: .
     # image: registry.gitlab.com/idgst/springboot-mongo-demo:latest
     restart: always
     container_name: extracleaning-demo
