@@ -7,7 +7,7 @@ services:
     restart: always
     container_name: extracleaning-demo
     ports:
-      - 8182:8080
+      - 8080:8080
     working_dir: /opt/app
     depends_on:
       - mongo
