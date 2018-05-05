@@ -1,0 +1,52 @@
+.top-offset-20 {
+  margin-top: 25px;
+}
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+.btn-call{
+  float: none;
+  margin: 25px auto;
+}
+
+
+.cursor{
+  cursor: pointer;
+}
+
+a,
+a label {
+  cursor: pointer;
+}
+
+
+.fill-form {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.space {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+@media (max-width: 991px) {
+
+  .space {
+    margin-left: 20px;
+    margin-right: 0px;
+  }
+}
+
+
+mat-slide-toggle{
+  margin-bottom: 15px;
+}
+
+.picker-box { z-index: 904 !important; }

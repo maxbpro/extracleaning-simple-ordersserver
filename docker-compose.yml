@@ -5,7 +5,7 @@ services:
     build: ./server
     # image: registry.gitlab.com/idgst/springboot-mongo-demo:latest
     restart: always
-    container_name: extracleaning-demo
+    container_name: extracleaning-spring
     ports:
       - 8080:8080
     working_dir: /opt/app
@@ -21,3 +21,10 @@ services:
       - $HOME/mongo-data:/data/db
       - $HOME/mongo-datacd:/data/bkp
     restart: always
+
+  web:
+    build: ./web
+    restart: always
+    container_name: extracleaning-angular-web
+    ports:
+      - 80:80

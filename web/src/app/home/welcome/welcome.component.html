@@ -1,0 +1,117 @@
+<section class="probootstrap-cover overflow-hidden relative"
+         style="background-image: url('assets/images/bg_2.jpg');"
+         data-stellar-background-ratio="0.5"  id="section-welcome">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md">
+        <h2 class="heading mb-2 display-4 font-light">Закажи химxистку прямо сейчас!</h2>
+        <p class="lead mb-5"></p>
+
+        <!--<a href="onepage.html" role="button" class="btn btn-primary p-3 mr-3 pl-5 pr-5 text-uppercase d-lg-inline d-md-inline d-sm-block d-block mb-3">Заказать</a>-->
+      <!---->
+      </div>
+
+      <div class="col-md">
+        <form [formGroup]="orderForm"  class="probootstrap-form" (ngSubmit)="onFormSubmit()">
+
+          <h5 class="price-title">Калькулятор заказа</h5>
+
+          <div class="form-group">
+            <div class="row mb-3">
+              <div class="col-md">
+                <div class="form-group">
+
+                  <div class="top-offset-20">
+                    <mat-slide-toggle #couch (change)="onSliderChange()" formControlName="couch">Диван</mat-slide-toggle>
+                  </div>
+
+                  <div class="top-offset-20">
+                    <mat-slide-toggle #armchair (change)="onSliderChange()" formControlName="armchair">Кресло</mat-slide-toggle>
+                  </div>
+
+                  <div class="top-offset-20">
+                    <mat-slide-toggle #chair (change)="onSliderChange()" formControlName="chair">Стул</mat-slide-toggle>
+                  </div>
+
+                  <div class="top-offset-20">
+                    <mat-slide-toggle #mattress (change)="onSliderChange()" formControlName="mattress">Матрас</mat-slide-toggle>
+                  </div>
+
+                  <div class="top-offset-20">
+                    <mat-slide-toggle #cover (change)="onSliderChange()" formControlName="cover">Ковер</mat-slide-toggle>
+                  </div>
+
+                  <div class="top-offset-20">
+                    <mat-slide-toggle>Пуфик</mat-slide-toggle>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+
+                  <div class="top-offset-10">
+                    <mat-form-field>
+                      <input matInput [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3"
+                              formControlName="date" placeholder="Дата чистки">
+                      <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+                    </mat-form-field>
+                  </div>
+
+
+                  <div class="top-offset-10">
+                    <mat-form-field>
+                      <input matInput [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" formControlName="time" placeholder="Время чистки">
+                      <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="top-offset-10">
+                    <mat-form-field>
+                      <input matInput  value="" placeholder="Адрес" formControlName="address"/>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="top-offset-10">
+                    <mat-form-field>
+                      <input matInput [textMask]="{mask: mask}" type="tel" value="" placeholder="Телефон" formControlName="phone"/>
+                    </mat-form-field>
+                  </div>
+
+
+                  <div class="top-offset-10">
+                    <p class="price-title">Cтоимость: </p>
+                    <h5 class="mb-3">от {{totalPrice}} (руб.)</h5>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md top-offset-20">
+                <input type="submit" value="Заказать звонок" [disabled] = "!orderForm.valid" class="btn btn-primary btn-block">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md top-offset-20">
+                <a [ngx-scroll-to]="'section-calculator'" href="#" class="link-button">Расширенный калькулятор</a>
+              </div>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>

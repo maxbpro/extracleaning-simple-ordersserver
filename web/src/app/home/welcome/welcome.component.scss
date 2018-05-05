@@ -1,0 +1,44 @@
+.top-offset-20 {
+  margin-top: 25px;
+}
+
+.top-offset-10 {
+  margin-top: 10px;
+}
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+.price-title{
+  color: #000000;
+}
+
+a {color: #000000;}
+a:hover {color: #0f0;}
+
+a {text-decoration: underline;}
+
+@media (max-width: 991px) {
+
+  .probootstrap-inner {
+    text-align: center !important;
+    margin-left:  30px !important;
+    margin-right:  30px !important;
+  }
+
+  .font-light {
+    text-align: center !important;
+    font-weight: 200 !important;
+    font-size: 40px !important;
+  }
+
+  .probootstrap-form{
+    text-align: center !important;
+    float: none;
+    margin: 0 auto;
+    widows: 350px !important;
+  }
+
+}

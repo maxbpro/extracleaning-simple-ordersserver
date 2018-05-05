@@ -1,0 +1,365 @@
+<section class="probootstrap_section"  id="section-calculator">
+  <div class="row text-center ">
+    <div class="col-md-12">
+      <h2 class="display-4 border-bottom probootstrap-section-heading">Калькулятор</h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="probootstrap-section-half d-md-flex">
+  <div class="col-md">
+    <form [formGroup]="orderForm" class="probootstrap-form fill-form" (ngSubmit)="onFormSubmit()">
+      <div class="container">
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group" formGroupName="couchGroup">
+              <mat-slide-toggle #couchSlider formControlName="slider"
+                                (change)="onSliderChange()">Диван</mat-slide-toggle>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!couchSlider.checked" placeholder="Размер" formControlName="size"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of couchSizes" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!couchSlider.checked" placeholder="Материал" formControlName="material"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of materials" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!couchSlider.checked" placeholder="Выдвижное место" formControlName="moves"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of couchMoves" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!couchSlider.checked" placeholder="Количество" formControlName="number"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of numbers" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group" formGroupName="mattressGroup">
+
+              <mat-slide-toggle #mattressSlider formControlName="slider"
+                                (change)="onSliderChange()">Матрац</mat-slide-toggle>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!mattressSlider.checked" placeholder="Размер" formControlName="size"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of mattressSizes" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!mattressSlider.checked" placeholder="Стороны" formControlName="sides"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of mattressSides" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!mattressSlider.checked" placeholder="Количество" formControlName="number"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of numbers" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group" formGroupName="armchairGroup">
+
+              <mat-slide-toggle #armchairSlider formControlName="slider"
+                                (change)="onSliderChange()">Кресло</mat-slide-toggle>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!armchairSlider.checked" placeholder="Материал" formControlName="material"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of materials" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!armchairSlider.checked" placeholder="Количество" formControlName="number"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of numbers" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group" formGroupName="chairGroup">
+
+              <mat-slide-toggle #chairSlider formControlName="slider"
+                                (change)="onSliderChange()">Стул</mat-slide-toggle>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!chairSlider.checked" placeholder="Тип" formControlName="type"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of chairTypes" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!chairSlider.checked" placeholder="Материал" formControlName="material"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of materials" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!chairSlider.checked" placeholder="Количество" formControlName="number"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of numbers" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- END row -->
+        <div class="row top-offset-20">
+
+          <div class="col-md">
+            <div class="form-group" formGroupName="coverGroup">
+              <mat-slide-toggle #coverSlider formControlName="slider"
+                                (change)="onSliderChange()">Ковер</mat-slide-toggle>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!coverSlider.checked" placeholder="Тип" formControlName="type"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of coverTypes" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!coverSlider.checked" placeholder="Длина ворса" formControlName="params"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of coverParams" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!coverSlider.checked" placeholder="Длина ковра" formControlName="height"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of coverHeight" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!coverSlider.checked" placeholder="Ширина ковра" formControlName="width"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of coverWidth" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!coverSlider.checked" placeholder="Материал" formControlName="material"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of coverMaterials" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+
+
+              <div>
+
+                <mat-form-field for="id_label_single">
+                  <mat-select [disabled]="!coverSlider.checked" placeholder="Количество" formControlName="number"
+                              (selectionChange)="onSelectionChange()">
+                    <mat-option *ngFor="let item of numbers" [value]="item">
+                      {{ item.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="col-md">
+            <div class="form-group space">
+
+              <div class="row top-offset-20">
+                <owl-date-time-inline class="picker-box" formControlName="date"></owl-date-time-inline>
+
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="col-md">
+            <div class="form-group">
+
+              <div class="row top-offset-20">
+                <mat-form-field class="full-width">
+                  <input matInput  value="" placeholder="Адрес" formControlName="address"/>
+                </mat-form-field>
+              </div>
+
+              <div class="row top-offset-20">
+                <mat-form-field class="full-width">
+                  <input matInput [textMask]="{mask: mask}" type="tel" value="" placeholder="Телефон" formControlName="phone"/>
+                </mat-form-field>
+              </div>
+
+              <div class="row top-offset-20">
+                <p class="price-title">Cтоимость: </p>
+              </div>
+
+              <div class="row">
+                <h5 class="mb-3">от {{totalPrice}} (руб.)</h5>
+              </div>
+
+
+              <div class="row top-offset-20">
+                <input type="submit" value="Заказать звонок" [disabled] = "!orderForm.valid" class="btn btn-primary btn-block">
+              </div>
+
+            </div>
+          </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </form>
+  </div>
+</section>
+
+
+
+
+
