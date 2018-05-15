@@ -1,0 +1,27 @@
+
+<div class="container">
+
+  <div class="container">
+    <div class="card card-container">
+      <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+      <p id="profile-name" class="profile-name-card"></p>
+      <form class="form-signin" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <span id="reauth-email" class="reauth-email"></span>
+
+        <input type="text" id="username" class="form-control" placeholder="Имя" name="username" [(ngModel)]="model.username" #username="ngModel" required autofocus autofocus>
+        <div *ngIf="f.submitted && !username.valid" class="help-block">Имя требуется</div>
+
+        <input type="password" id="password" class="form-control" placeholder="Пароль" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+        <div *ngIf="f.submitted && !password.valid" class="help-block">Пароль требуется</div>
+
+        <button class="btn btn-lg btn-primary btn-block btn-signin" [disabled]="loading" type="submit">Войти</button>
+      </form><!-- /form -->
+
+    </div><!-- /card-container -->
+  </div><!-- /container -->
+
+</div> <!-- /container -->
+
+
+
+

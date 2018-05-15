@@ -1,0 +1,153 @@
+
+<nb-card>
+
+
+  <div *ngIf="loaded" class="padding">
+
+    <table class="pull-left col-md-8 top-offset">
+      <tbody>
+
+        <tr *ngIf="order.armchairGroup">
+          <td class="h4"><strong>Кресло</strong></td>
+        </tr>
+        <tr *ngIf="order.armchairGroup.material">
+          <td class="h6"><strong>Материал</strong></td>
+          <td class="h5">{{order.armchairGroup.material.value}}</td>
+        </tr>
+
+        <tr *ngIf="order.armchairGroup.number">
+          <td class="h6"><strong>Количество</strong></td>
+          <td class="h5">{{order.armchairGroup.number.value}}</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+
+    <table class="pull-left col-md-8 top-offset">
+      <tbody>
+
+      <tr *ngIf="order.chairGroup">
+        <td class="h4"><strong>Стул</strong></td>
+      </tr>
+
+      <tr *ngIf="order.chairGroup.material">
+        <td class="h6"><strong>Материал</strong></td>
+        <td class="h5">{{order.chairGroup.material.value}}</td>
+      </tr>
+
+      <tr *ngIf="order.chairGroup.type">
+        <td class="h6"><strong>Тип</strong></td>
+        <td class="h5">{{order.chairGroup.type.value}}</td>
+      </tr>
+
+      <tr *ngIf="order.chairGroup.number">
+        <td class="h6"><strong>Количество</strong></td>
+        <td class="h5">{{order.chairGroup.number.value}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+
+    <table class="pull-left col-md-8 top-offset">
+
+      <tbody>
+
+        <tr *ngIf="order.mattressGroup">
+          <td class="h4"><strong>Матрац</strong></td>
+        </tr>
+
+        <tr *ngIf="order.mattressGroup.size">
+          <td class="h6"><strong>Размер</strong></td>
+          <td class="h5">{{order.mattressGroup.size.value}}</td>
+        </tr>
+
+        <tr *ngIf="order.mattressGroup.sides">
+          <td class="h6"><strong>Стороны</strong></td>
+          <td class="h5">{{order.mattressGroup.sides.value}}</td>
+        </tr>
+
+        <tr *ngIf="order.mattressGroup.number">
+          <td class="h6"><strong>Количество</strong></td>
+          <td class="h5">{{order.mattressGroup.number.value}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <table class="pull-left col-md-8 top-offset">
+      <tbody>
+
+        <tr *ngIf="order.couchGroup">
+          <td class="h4"><strong>Диван</strong></td>
+        </tr>
+
+        <tr *ngIf="order.couchGroup.size">
+          <td class="h6"><strong>Размер</strong></td>
+          <td class="h5">{{order.couchGroup.size.value}}</td>
+        </tr>
+
+        <tr *ngIf="order.couchGroup.moves">
+          <td class="h6"><strong>Выдвижная</strong></td>
+          <td class="h5">{{order.couchGroup.moves.value}}</td>
+        </tr>
+
+        <tr *ngIf="order.couchGroup.material">
+          <td class="h6"><strong>Материал</strong></td>
+          <td class="h5">{{order.couchGroup.material.value}}</td>
+        </tr>
+
+        <tr *ngIf="order.couchGroup.number">
+          <td class="h6"><strong>Количество</strong></td>
+          <td class="h5">{{order.couchGroup.number.value}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <table class="pull-left col-md-8 top-offset">
+      <tbody>
+
+      <tr *ngIf="order.coverGroup">
+        <td class="h4"><strong>Ковер</strong></td>
+      </tr>
+
+      <tr *ngIf="order.coverGroup.type">
+        <td class="h6"><strong>Тип</strong></td>
+        <td class="h5">{{order.coverGroup.type.value}}</td>
+      </tr>
+
+      <tr *ngIf="order.coverGroup.width">
+        <td class="h6"><strong>Ширина</strong></td>
+        <td class="h5">{{order.coverGroup.width.value}}</td>
+      </tr>
+
+      <tr *ngIf="order.coverGroup.height">
+        <td class="h6"><strong>Длина</strong></td>
+        <td class="h5">{{order.coverGroup.height.value}}</td>
+      </tr>
+
+      <tr *ngIf="order.coverGroup.params">
+        <td class="h6"><strong>Параметры</strong></td>
+        <td class="h5">{{order.coverGroup.params.value}}</td>
+      </tr>
+
+      <tr *ngIf="order.coverGroup.material">
+        <td class="h6"><strong>Материал</strong></td>
+        <td class="h5">{{order.coverGroup.material.value}}</td>
+      </tr>
+
+      <tr *ngIf="order.coverGroup.number">
+        <td class="h6"><strong>Количество</strong></td>
+        <td class="h5">{{order.coverGroup.number.value}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+
+</nb-card>
+

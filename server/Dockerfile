@@ -11,4 +11,4 @@ COPY target/landing-server-0.0.1-SNAPSHOT.jar  $PROJECT_HOME/server.jar
 
 WORKDIR $PROJECT_HOME
 
-CMD ["java", "-Dspring.data.mongodb.uri=mongodb://springboot-mongo:27017/orders","-Djava.security.egd=file:/dev/./urandom","-jar","./server.jar"]
+CMD ["java", "-Dspring.data.mongodb.uri=mongodb://extracleaning-mongo:27017/orders","-Djava.security.egd=file:/dev/./urandom","-jar","./server.jar"]

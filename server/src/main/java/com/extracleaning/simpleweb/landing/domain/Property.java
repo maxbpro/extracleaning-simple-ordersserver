@@ -6,4 +6,11 @@ import lombok.Data;
 public class Property {
 
     private String value;
+
+    public Property(String value) {
+        this.value = value;
+    }
+
+    public Property() {
+    }
 }

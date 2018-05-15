@@ -2,7 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { NbMenuService, NbSidebarService } from '@nebular/theme';
 import { UserService } from '../../../@core/data/users.service';
-import { AnalyticsService } from '../../../@core/utils/analytics.service';
+import {ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
+import {AuthService} from '../../../shared/auth.service';
+import {filter} from 'rxjs/operators';
+
 
 @Component({
   selector: 'ngx-header',
@@ -16,17 +20,28 @@ export class HeaderComponent implements OnInit {
 
   user: any;
 
-  userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
+  userMenu = [{ title: 'Выход' }];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private userService: UserService,
-              private analyticsService: AnalyticsService) {
+              private route: ActivatedRoute,
+              private router: Router,
+              private authenticationService: AuthService) {
   }
 
   ngOnInit() {
     this.userService.getUsers()
       .subscribe((users: any) => this.user = users.nick);
+
+    this.menuService.onItemClick()
+      .pipe(filter(({ tag }) => tag === 'my-context-menu'))
+      .subscribe(( event ) => {
+
+        if(event.item.title == "Выход"){
+          this.logout()
+        }
+      });
   }
 
   toggleSidebar(): boolean {
@@ -43,7 +58,11 @@ export class HeaderComponent implements OnInit {
     this.menuService.navigateHome();
   }
 
-  startSearch() {
-    this.analyticsService.trackEvent('startSearch');
+
+  logout(){
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
+
+
 }

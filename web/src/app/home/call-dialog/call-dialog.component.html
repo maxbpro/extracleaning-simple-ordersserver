@@ -1,5 +1,13 @@
-<h2 mat-dialog-title>Заказать звонок</h2>
-<mat-dialog-content>Ваша завяка принята, менеджер свяжется с Вами в ближайшее время</mat-dialog-content>
-<mat-dialog-actions>
-  <button class="mat-raised-button mat-primary" [mat-dialog-close]="true">Хорошо</button>
-</mat-dialog-actions>
+
+<div class="modal-header">
+  <h4 class="modal-title">ExtraCleaning</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>Ваша завяка принята, менеджер свяжется с Вами в ближайшее время</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Хорошо</button>
+</div>

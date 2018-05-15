@@ -7,5 +7,6 @@ export const environment = {
   production: false,
   PARSE_APP_ID: 'Fsk0eOuypmOyQr7jhyl77QhzmtEdjMbJWFNTBZSz',
   PARSE_X_TOKEN: 'lZbNBahuwdR9ECRCyKnCfYNivzt0YH0G9Hk6WDxX',
-  serverURL: 'https://parseapi.back4app.com'
+  serverURL: 'https://parseapi.back4app.com',
+  serverEndpoint: 'http://localhost:8080/api/v1'
 };

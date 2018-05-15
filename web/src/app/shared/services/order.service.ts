@@ -16,7 +16,7 @@ export class OrderService {
 
   sendOrder(order: Order) {
     const body = JSON.stringify(order);
-    const url = 'http://localhost:8080/orders';
+    const url = environment.serverEndpoint + '/orders/standard';
 
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -27,7 +27,7 @@ export class OrderService {
 
   sendSimpleOrder(order: Order) {
     const body = JSON.stringify(order);
-    const url = 'http://localhost:8080/orders/simple';
+    const url = environment.serverEndpoint + '/orders/simple';
 
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json'})

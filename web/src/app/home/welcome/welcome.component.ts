@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {Order} from "../../shared/domain/Order";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {OrderService} from "../../shared/services/order.service";
+import {Order} from '../../shared/domain/Order';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {OrderService} from '../../shared/services/order.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {CallDialogComponent} from '../call-dialog/call-dialog.component';
 import {ProgressDialogComponent} from '../dialogs/progress-dialog/progress-dialog.component';
 import {ErrorDialogComponent} from '../dialogs/error-dialog/error-dialog.component';
 import {CommonModule, DatePipe} from '@angular/common';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-welcome',
@@ -41,7 +42,7 @@ export class WelcomeComponent implements OnInit {
   coverStartPrice = 1000;
 
   constructor(private orderService: OrderService,
-              private dialog: MatDialog,
+              private modalService: NgbModal,
               private datePipe: DatePipe) { }
 
   ngOnInit() {
@@ -69,11 +70,11 @@ export class WelcomeComponent implements OnInit {
       this.order.time = this.datePipe.transform(this.order.time, 'yyyy-MM-dd\'T\'HH:mm:ss');
 
 
-      let dialogRef = this.dialog.open(ProgressDialogComponent, {height: '200px'});
+      const dialogRef = this.modalService.open(ProgressDialogComponent);
 
       this.orderService.sendSimpleOrder(this.order).subscribe(
         data => {
-          this.dialog.open(CallDialogComponent, {height: '150px'});
+          this.modalService.open(CallDialogComponent);
         },
         err => this.showError(dialogRef, err),
         () => dialogRef.close()
@@ -82,9 +83,11 @@ export class WelcomeComponent implements OnInit {
     }
   }
 
+
+
   showError(dialogRef, error) {
     dialogRef.close();
-    this.dialog.open(ErrorDialogComponent, {height: '150px'});
+    this.modalService.open(ErrorDialogComponent);
     console.error(error);
   }
 

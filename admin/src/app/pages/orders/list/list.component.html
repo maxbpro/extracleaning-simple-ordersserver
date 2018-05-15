@@ -1,0 +1,44 @@
+<nb-card>
+
+
+  <div *ngIf="loaded">
+
+    <div class="container">
+      <div class="text-center">
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>ID </th>
+            <th>Телефон</th>
+            <th>Адрес</th>
+            <th>Дата</th>
+            <th>Other Info</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of items">
+            <td>{{item.id}}</td>
+            <td>{{item.phone}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.date}}</td>
+            <td>
+              <button class="btn btn-danger" type="button" (click)="onDisplayInfo(item)"  >Info</button>
+            </td>
+
+          </tr>
+          </tbody>
+        </table>
+
+        <ngb-pagination (pageChange)="onPager($event)"
+                        [collectionSize]="ordersPage.totalElements"
+                        [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</nb-card>

@@ -16,7 +16,7 @@ import {ScriptService} from "./shared/script.service";
 import {CallDialogComponent} from "./home/call-dialog/call-dialog.component";
 import {ProgressDialogComponent} from './home/dialogs/progress-dialog/progress-dialog.component';
 import {ErrorDialogComponent} from './home/dialogs/error-dialog/error-dialog.component';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -35,6 +35,7 @@ import {ErrorDialogComponent} from './home/dialogs/error-dialog/error-dialog.com
     MatToolbarModule,
     MatIconModule,
     RouterModule.forRoot(routes),
+    NgbModule.forRoot(),
     MatDialogModule,
     MatProgressSpinnerModule
   ],

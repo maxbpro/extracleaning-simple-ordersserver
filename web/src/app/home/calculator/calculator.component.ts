@@ -8,6 +8,7 @@ import {CallDialogComponent} from '../call-dialog/call-dialog.component';
 import {ProgressDialogComponent} from '../dialogs/progress-dialog/progress-dialog.component';
 import {ErrorDialogComponent} from '../dialogs/error-dialog/error-dialog.component';
 import {CommonModule, DatePipe} from '@angular/common';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-calculator',
@@ -116,7 +117,7 @@ export class CalculatorComponent implements OnInit {
   totalPrice = 0;
 
   constructor(private orderService: OrderService,
-              private dialog: MatDialog,
+              private modalService: NgbModal,
               private datePipe: DatePipe) {
   }
 
@@ -311,15 +312,14 @@ export class CalculatorComponent implements OnInit {
       this.order = this.orderForm.value;
       console.log(this.order);
 
-      console.log(this.order.date);
       this.order.date = this.datePipe.transform(this.order.date, 'yyyy-MM-dd\'T\'HH:mm:ss');
-      console.log(this.order.date);
 
-      let dialogRef = this.dialog.open(ProgressDialogComponent, {height: '200px'});
+
+      const dialogRef = this.modalService.open(ProgressDialogComponent);
 
       this.orderService.sendOrder(this.order).subscribe(
         data => {
-          this.dialog.open(CallDialogComponent, {height: '150px'});
+          this.modalService.open(CallDialogComponent);
         },
         err => this.showError(dialogRef, err),
         () => dialogRef.close()
@@ -331,7 +331,7 @@ export class CalculatorComponent implements OnInit {
 
   showError(dialogRef, error) {
     dialogRef.close();
-    this.dialog.open(ErrorDialogComponent, {height: '150px'});
+    this.modalService.open(ErrorDialogComponent);
     console.error(error);
   }
 

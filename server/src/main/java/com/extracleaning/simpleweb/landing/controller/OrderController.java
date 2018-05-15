@@ -4,20 +4,95 @@ package com.extracleaning.simpleweb.landing.controller;
 import com.extracleaning.simpleweb.landing.domain.*;
 import com.extracleaning.simpleweb.landing.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.core.env.Environment;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/api/v1/orders")
 public class OrderController {
 
     @Autowired
     OrderRepository orderRepository;
 
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @Autowired
+    private MessageSource messages;
+
+    @Autowired
+    private Environment env;
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+
+//    @PostConstruct
+//    private void init() {
+//
+//        orderRepository.deleteAll();
+//
+//        for(int i =0 ; i < 33; i++){
+//
+//            Order order = new Order();
+//            order.setAddress("Красная 145");
+//            order.setPhone("+7 928 4441873");
+//            order.setDate(LocalDateTime.now());
+//
+//            ArmchairGroup armchairGroup = new ArmchairGroup();
+//            armchairGroup.setMaterial(new Property("material 1"));
+//            armchairGroup.setNumber(new Property("3"));
+//            armchairGroup.setSlider(true);
+//            order.setArmchairGroup(armchairGroup);
+//
+//            MattressGroup mattressGroup = new MattressGroup();
+//            mattressGroup.setSize(new Property("size 1"));
+//            mattressGroup.setSides(new Property("2"));
+//            mattressGroup.setNumber(new Property("3"));
+//            mattressGroup.setSlider(true);
+//            order.setMattressGroup(mattressGroup);
+//
+//            CoverGroup coverGroup = new CoverGroup();
+//            coverGroup.setMaterial(new Property("material 1"));
+//            coverGroup.setNumber(new Property("3"));
+//            coverGroup.setHeight(new Property("2"));
+//            coverGroup.setType(new Property("type 1"));
+//            coverGroup.setWidth(new Property("2"));
+//            coverGroup.setSlider(true);
+//            order.setCoverGroup(coverGroup);
+//
+//            CouchGroup couchGroup = new CouchGroup();
+//            couchGroup.setMaterial(new Property("material 1"));
+//            couchGroup.setNumber(new Property("3"));
+//            couchGroup.setSize(new Property("size 1"));
+//            couchGroup.setMoves(new Property("yes"));
+//            couchGroup.setSlider(true);
+//            order.setCouchGroup(couchGroup);
+//
+//            ChairGroup chairGroup = new ChairGroup();
+//            chairGroup.setMaterial(new Property("material 1"));
+//            chairGroup.setNumber(new Property("3"));
+//            chairGroup.setSlider(true);
+//            chairGroup.setType(new Property("type 1"));
+//            order.setChairGroup(chairGroup);
+//
+//            orderRepository.save(order);
+//        }
+//
+//
+//
+//    }
+
+    @RequestMapping(value = "/standard", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void create(@RequestBody Order order) {
         orderRepository.save(order);
         notifyCleaner();
@@ -74,11 +149,6 @@ public class OrderController {
         notifyCleaner();
     }
 
-    @RequestMapping(value = "/{id}")
-    public Order read(@PathVariable String id) {
-        return orderRepository.findOne(id);
-    }
-
     @RequestMapping(value = "/all")
     public List<Order> getAll() {
         return orderRepository.findAll();
@@ -96,5 +166,36 @@ public class OrderController {
 
     private void notifyCleaner(){
 
+        String recipientAddress1 = "maxbpro2009@gmail.com";
+        String recipientAddress2 = "maxb2009@xcleaner.ru";
+        String recipientAddress3 = "nastya@xcleaner.ru";
+        String recipientAddress4 = "sergei@xcleaner.ru";
+        String subject = "Опа, заказа прилетел";
+
+        String message = "Новый заказ, проверь админку";
+
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setTo(new String[]{recipientAddress1, recipientAddress2, recipientAddress3, recipientAddress4});
+        email.setSubject(subject);
+        email.setFrom(env.getProperty("support.email"));
+
+        email.setText(message);
+
+        try{
+            mailSender.send(email);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            throw ex;
+        }
+    }
+
+    @RequestMapping()
+    private Page<Order> orders(@RequestParam("page") int page, @RequestParam("size") int size){
+        return orderRepository.findAll(new PageRequest(page, size));
+    }
+
+    @RequestMapping("/{id}")
+    private Order getOrder(@PathVariable String id){
+        return orderRepository.findOne(id);
     }
 }

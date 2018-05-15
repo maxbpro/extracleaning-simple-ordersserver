@@ -4,7 +4,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Dashboard',
     icon: 'nb-home',
-    link: '/pages/dashboard',
+    link: '/dashboard',
     home: true,
   },
   {
@@ -16,12 +16,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-locked',
     children: [
       {
-        title: 'Login',
-        link: '/auth/login',
-      },
-      {
-        title: 'Register',
-        link: '/auth/register',
+        title: 'Список',
+        link: '/orders/list',
       }
     ],
   },
@@ -31,7 +27,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Список',
-        link: '/auth/login',
+        link: '/users/list',
       }
     ],
   },
