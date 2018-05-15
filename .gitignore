@@ -23,3 +23,4 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+!/server/target/landing-server-0.0.1-SNAPSHOT.jar
