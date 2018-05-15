@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serverEndpoint: 'http://localhost:8080'
+  serverEndpoint: 'http://xcleaner.ru:8080'
 };
