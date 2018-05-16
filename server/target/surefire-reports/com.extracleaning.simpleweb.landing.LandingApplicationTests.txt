@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.extracleaning.simpleweb.landing.LandingApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.668 sec - in com.extracleaning.simpleweb.landing.LandingApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.892 sec - in com.extracleaning.simpleweb.landing.LandingApplicationTests

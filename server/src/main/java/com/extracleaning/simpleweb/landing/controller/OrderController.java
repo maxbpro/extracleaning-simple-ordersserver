@@ -95,7 +95,7 @@ public class OrderController {
     @RequestMapping(value = "/standard", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void create(@RequestBody Order order) {
         orderRepository.save(order);
-        notifyCleaner();
+        //notifyCleaner();
     }
 
     @RequestMapping(value = "/simple", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -146,7 +146,7 @@ public class OrderController {
         }
 
         orderRepository.save(order);
-        notifyCleaner();
+        //notifyCleaner();
     }
 
     @RequestMapping(value = "/all")
