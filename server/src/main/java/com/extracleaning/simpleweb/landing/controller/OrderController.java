@@ -3,6 +3,9 @@ package com.extracleaning.simpleweb.landing.controller;
 
 import com.extracleaning.simpleweb.landing.domain.*;
 import com.extracleaning.simpleweb.landing.repositories.OrderRepository;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.core.env.Environment;
@@ -12,12 +15,14 @@ import org.springframework.http.MediaType;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/v1/orders")
@@ -95,7 +100,7 @@ public class OrderController {
     @RequestMapping(value = "/standard", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void create(@RequestBody Order order) {
         orderRepository.save(order);
-        //notifyCleaner();
+        notifyCleanerWithMailGun();
     }
 
     @RequestMapping(value = "/simple", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -146,7 +151,7 @@ public class OrderController {
         }
 
         orderRepository.save(order);
-        //notifyCleaner();
+        notifyCleanerWithMailGun();
     }
 
     @RequestMapping(value = "/all")
@@ -187,6 +192,31 @@ public class OrderController {
             ex.printStackTrace();
             throw ex;
         }
+
+        notifyCleanerWithMailGun();
+    }
+
+    private void notifyCleanerWithMailGun(){
+
+        String DOMAIN_NAME = "xcleaner.ru";
+        String API_KEY = "key-652c4d8005cb3a9bab7de3956af9d461";
+
+        try{
+
+            HttpResponse<JsonNode> request = Unirest.post("https://api.mailgun.net/v3/" + DOMAIN_NAME + "/messages")
+                    .basicAuth("api", API_KEY)
+                    .queryString("from", "maxb2009@xcleaner.ru")
+                    .queryString("to", "maxbpro2009@gmail.com")
+                    .queryString("subject", "Опа, заказа прилетел")
+                    .queryString("text", "Новый заказ, проверь админку")
+                    .asJson();
+            JsonNode jsonNode = request.getBody();
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+
     }
 
     @RequestMapping()
