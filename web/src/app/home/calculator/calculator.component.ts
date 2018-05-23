@@ -190,107 +190,114 @@ export class CalculatorComponent implements OnInit {
 
   updatePrice() {
 
-
     this.totalPrice = 0;
-    if(this.orderForm.value.mattressGroup.mattressSlider){
+    if(this.orderForm.value.mattressGroup.slider){
 
-      let startPrice = this.orderForm.value.mattressGroup.sizesMattress.startPrice;
+      let startPrice = this.orderForm.value.mattressGroup.size.startPrice;
+      console.log('startPrice' + startPrice);
 
       //sizes
-      let k = this.orderForm.value.mattressGroup.sizesMattress.k;
+      let k = this.orderForm.value.mattressGroup.size.k;
       startPrice = this.increasePrice(k, startPrice);
+
+      console.log('startPrice 1' + startPrice);
 
       //sides
-      k = this.orderForm.value.mattressGroup.sidesMattress.k;
+      k = this.orderForm.value.mattressGroup.sides.k;
       startPrice = this.increasePrice(k, startPrice);
 
+      console.log('startPrice 2' + startPrice);
+
       //numbers
-      k = this.orderForm.value.mattressGroup.numberMattress.k;
+      k = this.orderForm.value.mattressGroup.number.k;
       this.increasePrice(k, startPrice);
 
+      console.log('startPrice 3' + startPrice);
     }
 
 
 
-    if(this.orderForm.value.chairGroup.chairSlider){
+    if(this.orderForm.value.chairGroup.slider){
 
 
-      let startPrice = this.orderForm.value.chairGroup.typeChair.startPrice;
+      let startPrice = this.orderForm.value.chairGroup.type.startPrice;
 
       //type
-      let k = this.orderForm.value.chairGroup.typeChair.k;
+      let k = this.orderForm.value.chairGroup.type.k;
       startPrice = this.increasePrice(k, startPrice);
 
       //material
-      k = this.orderForm.value.chairGroup.materialChair.k;
+      k = this.orderForm.value.chairGroup.material.k;
       startPrice = this.increasePrice(k, startPrice);
 
       //numbers
-      k = this.orderForm.value.chairGroup.numberChair.k;
+      k = this.orderForm.value.chairGroup.number.k;
       this.increasePrice(k, startPrice);
 
     }
 
-    if(this.orderForm.value.armchairGroup.armchairSlider){
+    if(this.orderForm.value.armchairGroup.slider){
 
       let startPrice = 500;
 
       //material
-      let k = this.orderForm.value.armchairGroup.materialArmchair.k;
+      let k = this.orderForm.value.armchairGroup.material.k;
       startPrice = this.increasePrice(k, startPrice);
 
       //numbers
-      k = this.orderForm.value.armchairGroup.numberArmchair.k;
+      k = this.orderForm.value.armchairGroup.number.k;
       this.increasePrice(k, startPrice);
     }
 
-    if(this.orderForm.value.couchGroup.couchSlider){
+    if(this.orderForm.value.couchGroup.slider){
 
-      let startPrice = this.orderForm.value.couchGroup.sizeCouch.startPrice;
+      let startPrice = this.orderForm.value.couchGroup.size.startPrice;
 
       //size
-      let k = this.orderForm.value.couchGroup.sizeCouch.k;
+      let k = this.orderForm.value.couchGroup.size.k;
       startPrice = this.increasePrice(k, startPrice);
 
       //material
-      k = this.orderForm.value.couchGroup.materialCouch.k;
+      k = this.orderForm.value.couchGroup.material.k;
       startPrice = this.increasePrice(k, startPrice);
 
       //moves
-      if(this.orderForm.value.couchGroup.movesCouch.adding){
-        let adding = this.orderForm.value.couchGroup.movesCouch.startPrice;
+      if(this.orderForm.value.couchGroup.moves.adding){
+        let adding = this.orderForm.value.couchGroup.moves.startPrice;
         this.totalPrice  = this.totalPrice  + adding;
         startPrice = startPrice + adding;
       }
 
 
       //numbers
-      k = this.orderForm.value.couchGroup.numberCouch.k;
+      k = this.orderForm.value.couchGroup.number.k;
       this.increasePrice(k, startPrice);
     }
 
 
-    if(this.orderForm.value.coverGroup.coverSlider){
+    if(this.orderForm.value.coverGroup.slider){
 
-      let startPrice = this.orderForm.value.coverGroup.paramsCover.startPrice;
+      let startPrice = this.orderForm.value.coverGroup.params.startPrice;
 
-      let w = this.orderForm.value.coverGroup.widthCover.startPrice;
-      let h = this.orderForm.value.coverGroup.heightCover.startPrice;
+      let w = this.orderForm.value.coverGroup.width.startPrice;
+      let h = this.orderForm.value.coverGroup.height.startPrice;
 
       startPrice = w * h * startPrice;
 
       //type
-      let k = this.orderForm.value.coverGroup.typeCover.k;
+      let k = this.orderForm.value.coverGroup.type.k;
       startPrice = this.increasePrice(k, startPrice);
 
       //material
-      k = this.orderForm.value.coverGroup.materialCover.k;
+      k = this.orderForm.value.coverGroup.material.k;
       startPrice = this.increasePrice(k, startPrice);
 
       //numbers
-      k = this.orderForm.value.coverGroup.numberCover.k;
+      k = this.orderForm.value.coverGroup.number.k;
       this.increasePrice(k, startPrice);
     }
+
+    console.log('updatePrice is ' + this.totalPrice);
   }
 
   increasePrice(k: number, startPrice: number): number{
