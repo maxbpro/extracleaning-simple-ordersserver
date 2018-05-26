@@ -43,7 +43,7 @@
                   </div>
 
                   <div class="top-offset-20">
-                    <mat-slide-toggle>Пуфик</mat-slide-toggle>
+                    <mat-slide-toggle #puf (change)="onSliderChange()" formControlName="puf">Пуфик</mat-slide-toggle>
                   </div>
 
                 </div>

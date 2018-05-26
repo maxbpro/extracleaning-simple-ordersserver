@@ -30,6 +30,7 @@ export class WelcomeComponent implements OnInit {
   chair = new FormControl();
   armchair = new FormControl();
   cover = new FormControl();
+  puf = new FormControl();
 
   orderForm: FormGroup;
 
@@ -40,6 +41,7 @@ export class WelcomeComponent implements OnInit {
   armchairStartPrice = 500;
   mattressStartPrice = 500;
   coverStartPrice = 1000;
+  pufStartPrice = 400;
 
   constructor(private orderService: OrderService,
               private modalService: NgbModal,
@@ -54,6 +56,7 @@ export class WelcomeComponent implements OnInit {
       chair : new FormControl(false),
       armchair : new FormControl(false),
       cover : new FormControl(false),
+      puf : new FormControl(false),
       address : new FormControl(),
       date : new FormControl(),
       time : new FormControl()
@@ -118,7 +121,9 @@ export class WelcomeComponent implements OnInit {
       this.totalPrice += this.couchStartPrice;
     }
 
-
+    if(this.orderForm.value.puf){
+      this.totalPrice += this.pufStartPrice;
+    }
   }
 
 }
